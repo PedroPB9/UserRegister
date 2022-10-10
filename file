@@ -1,0 +1,47 @@
+def opfile(txt):
+    try:
+        a = open(txt, 'rt')
+    except (FileNotFoundError, FileNotFoundError):
+        return False
+    else:
+        a.close()
+        return True
+
+
+def createfile(txt):
+    try:
+        a = open(txt, 'x')
+    except (FileNotFoundError, FileNotFoundError):
+        print('\033[31mERROR WHILE CREATING THE FILE!\033[m')
+    else:
+        a.close()
+        print(f'FILE WAS SUCCESSFULLY CREATED!')
+
+
+def display(txt):
+    try:
+        a = open(txt, 'rt')
+    except:
+        print('\033[31mFILE COULD NOT BE READ!\033[m')
+    else:
+        for line in a:  # a cada write == 1 index de lista, a é lista, line recebe os index de a
+            data = line.split(';')  # vai dividir o index em outros 2
+            data[1] = data[1].replace('\n', '')
+            print(f'{data[0]:<30}{data[1]}')
+        a.close()
+
+
+
+def register(txt, nm='unknown', ag=0):
+    try:
+        a = open(txt, 'at')
+    except:
+        print('\033[31mFILE COULD NOT BE READ!\033[m')
+    else:
+        try:
+            a.write(f'{nm};{ag} years old\n')
+        except:
+            print(f'\033[31mCOULD NOT BE WRITTEN IN THE FILE!\033[m')
+        else:
+            print(f'New register of {nm} added!')
+            a.close()
