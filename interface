@@ -1,0 +1,29 @@
+def readint(st):
+    while True:
+        try:
+            a = int(input(st))
+        except (ValueError, TypeError):
+            print(f'\033[31m<<ERROR>> Type an integer number please.\033[m')
+        except KeyboardInterrupt:
+            print(f'\n\033[31mThe user did not inform a value.\033[m')
+            return 3
+        else:
+            return a
+
+
+def line(sz=45):
+    return f'-' * sz
+
+
+def title(txt):
+    print(line())
+    print(txt.center(45))
+    print(line())
+
+
+def menu(lt):
+    for i, v in enumerate(lt):
+        print(f'\033[34m {i + 1}-\033[m \033[36m{v}\033[m')
+    print(line())
+    opt = readint('Your option: ')
+    return opt
