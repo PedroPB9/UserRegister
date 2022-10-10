@@ -1,0 +1,26 @@
+from wrkfinale.lib.interface import *
+from wrkfinale.save.file import *
+#  Nome do arquivo
+fn = 'tt.txt'
+# Verifico se ele abre
+if opfile(fn):
+    print(f'The file was successfully opened.')
+# Se não abre eu crio
+else:
+    createfile(fn)
+while True:
+    title('MAIN MENU')
+    ans = menu(['Display The Users', 'Register a new User', 'Exit'])
+    if ans == 1:
+        title('RESGISTERED DISPLAY')
+        display(fn)
+    elif ans == 2:
+        title('NEW REGISTER')
+        nm = str(input('\033[33mName:\033[m ')).title().strip()
+        ag = readint('\033[33mAge:\033[m ')
+        register(fn, nm, ag)
+    elif ans == 3:
+        title('\t \033[35mOPERATION FINISHED\033[m')
+        break
+    else:
+        title(f'\t \033[31m<<INVALID OPTION>>\033[m')
